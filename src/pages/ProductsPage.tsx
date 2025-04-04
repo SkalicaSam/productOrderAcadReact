@@ -7,6 +7,7 @@ import AddProduct from '../components/AddProduct';
 export const ProductPage: React.FC = () => {
        const [ products, setProducts ] = useState<Product[]>([])
 
+
 //        const [ name, setName ] = useState('')
        const [ refresh, setRefresh] = useState(0)
     
@@ -16,17 +17,21 @@ export const ProductPage: React.FC = () => {
                 setProducts(response.data)
             }
             fetchProducts()
-        }, [])
+        }, [refresh]);
+
+     const handleProductAdded = () => {
+            setRefresh(prev => prev + 1);
+        }
 
 
 
-       const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault()
-        console.log('somt u')
-        await addAuthor(name)
-        setName('')
-        setRefresh((prev) => prev +1 )
-       }
+//        const handleSubmit = async (e: React.FormEvent) => {
+//         e.preventDefault()
+//         console.log('somt u')
+//         await addAuthor(name)
+//         setName('')
+//         setRefresh((prev) => prev +1 )
+//        }
 
 
     return (
@@ -36,7 +41,7 @@ export const ProductPage: React.FC = () => {
         <div key={refresh}>
             <h1>Product Page </h1>
 
-           
+
 
             <ul>
                 {products.map((product) => (
@@ -47,7 +52,7 @@ export const ProductPage: React.FC = () => {
 
 
             <div>
-                <AddProduct />
+                 <AddProduct onProductAdded={handleProductAdded} />
             </div>
 
         </div>

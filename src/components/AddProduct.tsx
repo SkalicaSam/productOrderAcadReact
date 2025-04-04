@@ -3,9 +3,11 @@ import { addProduct } from '../services/api';
 import { Product } from "../types";
 
 
+interface AddProductProps {
+  onProductAdded?: () => void;
+}
 
-
-const AddProduct: React.FC = () => {
+const AddProduct: React.FC<AddProductProps> = ({ onProductAdded }) => {
 
   const [ products, setProducts ] = useState<Product[]>([])
 
@@ -22,6 +24,7 @@ const AddProduct: React.FC = () => {
             setName('')
             setPrice('')
             console.log('submitted successfully')
+            onProductAdded()
 
    } catch (error) {
        console.error('Chyba při přidávání produktu:', error);
