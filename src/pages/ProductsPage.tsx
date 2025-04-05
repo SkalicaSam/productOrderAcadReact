@@ -1,15 +1,13 @@
 import React from "react";
 import { useEffect, useState } from 'react'
-import { Author, Product } from "../types";
-import { addAuthor, getAuthors, getProducts } from "../services/api";
+import { Product } from "../types";
+import { getProducts } from "../services/api";
 import AddProduct from '../components/AddProduct';
 
 export const ProductPage: React.FC = () => {
        const [ products, setProducts ] = useState<Product[]>([])
-
-
-//        const [ name, setName ] = useState('')
        const [ refresh, setRefresh] = useState(0)
+       const [error, setError] = useState<string | null>(null)
     
         useEffect(() => {
             const fetchProducts = async () => {
@@ -19,29 +17,14 @@ export const ProductPage: React.FC = () => {
             fetchProducts()
         }, [refresh]);
 
-     const handleProductAdded = () => {
-            setRefresh(prev => prev + 1);
+        const handleProductAdded = () => {
+                setRefresh(prev => prev + 1);
         }
 
-
-
-//        const handleSubmit = async (e: React.FormEvent) => {
-//         e.preventDefault()
-//         console.log('somt u')
-//         await addAuthor(name)
-//         setName('')
-//         setRefresh((prev) => prev +1 )
-//        }
-
-
     return (
-
-
-
-        <div key={refresh}>
+        <div>
             <h1>Product Page </h1>
-
-
+            {error && <p style={{color: 'red'}}>{error}</p>}
 
             <ul>
                 {products.map((product) => (
@@ -49,15 +32,9 @@ export const ProductPage: React.FC = () => {
                 ))}
             </ul>
 
-
-
             <div>
                  <AddProduct onProductAdded={handleProductAdded} />
             </div>
-
         </div>
-
-
-
     )
 }
