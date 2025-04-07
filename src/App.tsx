@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { AuthorPage } from './pages/AuthorsPage'
 import { ProductPage } from './pages/ProductsPage'
 import { Link } from 'react-router-dom';
+import { ProductDetailPage } from './pages/ProductDetailPage';
 
 function App() {
  
@@ -32,6 +33,7 @@ function App() {
       <Routes>
         <Route path="/authors" element={<AuthorPage />} />
         <Route path="/products" element={<ProductPage />} />
+        <Route path="/product/:id" element={<ProductDetailPage />} />
       </Routes>
     </BrowserRouter>
   )

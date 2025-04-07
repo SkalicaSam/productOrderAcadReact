@@ -14,3 +14,5 @@ export const addAuthor = (name: string)  => api.post('/author', {name})
 export const getProducts = () => api.get('/product')
 
 export const addProduct = (name: string, price: number)  => api.post('/product', {name, price})
+
+export const getProduct = (id: string) => api.get(`/product/${id}`);
