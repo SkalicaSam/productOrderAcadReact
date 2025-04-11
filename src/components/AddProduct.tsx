@@ -4,7 +4,7 @@ import { Product } from "../types";
 
 
 interface AddProductProps {
-    onProductAdded?: () => void;
+    onProductAdded: () => void;
 }
 
 const AddProduct: React.FC<AddProductProps> = ({ onProductAdded }) => {
@@ -31,6 +31,8 @@ const AddProduct: React.FC<AddProductProps> = ({ onProductAdded }) => {
                 await addProduct(name, price)
                 setName('')
                 setPrice('')
+                console.log('submitted successfully')
+//                 onProductAdded();
                 console.log('submitted successfully')
                 if (onProductAdded) onProductAdded()
 

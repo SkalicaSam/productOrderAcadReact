@@ -19,7 +19,7 @@ export const ProductPage: React.FC = () => {
             <h1>Product Page </h1>
             {error && <p style={{color: 'red'}}>{error}</p>}
             <div>
-                 <ProductList/>
+                 <ProductList refresh={refresh}/>
             </div>
             <div>
                  <AddProduct onProductAdded={handleProductAdded}/>

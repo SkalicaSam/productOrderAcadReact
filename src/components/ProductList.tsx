@@ -1,11 +1,16 @@
 import React from "react";
 import { Product } from "../types";
-import { getProducts } from "../services/api";
+import { getProducts, deleteProduct } from "../services/api";
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-export const ProductList: React.FC = () => {
-    const [ products, setProducts ] = useState<Product[]>([])
+interface ProductListProps {
+    refresh: number;
+}
+
+export const ProductList: React.FC<ProductListProps> = ({ refresh }) => {
+    const [ products, setProducts ] = useState<Product[]>([]);
+    const navigate = useNavigate();
 
      useEffect(() => {
                 const fetchProducts = async () => {
@@ -13,7 +18,16 @@ export const ProductList: React.FC = () => {
                     setProducts(response.data)
                 }
                 fetchProducts()
-            }, [] );
+            }, [refresh] );
+
+    const handleDelete = async (id: number) => {
+            try {
+                await deleteProduct(id);
+                setProducts(products.filter(product => product.id !== id));
+            } catch (error) {
+                console.error('Chyba při mazání produktu:', error);
+            }
+        };
 
     return (
         <div>
@@ -26,6 +40,7 @@ export const ProductList: React.FC = () => {
                                       {product.name}
                           </Link>
                           , <> product  price:   </>{product.price}
+                          <button onClick={() => handleDelete(product.id)}>Smazat</button>
                       </li>
                   ))}
              </ul>
