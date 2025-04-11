@@ -6,6 +6,7 @@ import { AuthorPage } from './pages/AuthorsPage'
 import { ProductPage } from './pages/ProductsPage'
 import { Link } from 'react-router-dom';
 import { ProductDetailPage } from './pages/ProductDetailPage';
+import { ProductEditPage } from './pages/ProductEditPage';
 
 function App() {
  
@@ -34,6 +35,7 @@ function App() {
         <Route path="/authors" element={<AuthorPage />} />
         <Route path="/products" element={<ProductPage />} />
         <Route path="/product/:id" element={<ProductDetailPage />} />
+        <Route path="/product/edit/:id" element={<ProductEditPage />} />
       </Routes>
     </BrowserRouter>
   )

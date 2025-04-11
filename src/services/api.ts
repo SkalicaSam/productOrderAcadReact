@@ -16,3 +16,12 @@ export const getProducts = () => api.get('/product')
 export const addProduct = (name: string, price: number)  => api.post('/product', {name, price})
 
 export const getProduct = (id: string) => api.get(`/product/${id}`);
+
+export const updateProduct = (id: number, data: { name: string; description: string }) =>
+    api.put(`/product/${id}`, {
+            name: data.name,
+            description: data.description
+        });
+
+export const deleteProduct = (id: number) =>
+    api.delete(`/product/${id}`);

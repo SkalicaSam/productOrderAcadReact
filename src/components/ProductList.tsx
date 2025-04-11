@@ -13,7 +13,7 @@ export const ProductList: React.FC = () => {
                     setProducts(response.data)
                 }
                 fetchProducts()
-            }, );
+            }, [] );
 
     return (
         <div>
@@ -21,12 +21,9 @@ export const ProductList: React.FC = () => {
 
             <ul>
                  {products.map((product) => (
-//                       <li key={product.id}>{product.name}, <> product  price:   </>{product.price}</li>
                       <li key={product.id}>
-                          <Link to={`/product/${product.id}`}
-//                                                         target="_blank" rel="noopener noreferrer"
-                                                        >
-                                                      {product.name}
+                          <Link to={`/product/${product.id}`} >
+                                      {product.name}
                           </Link>
                           , <> product  price:   </>{product.price}
                       </li>
