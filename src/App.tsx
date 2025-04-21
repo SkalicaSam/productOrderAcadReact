@@ -7,6 +7,8 @@ import { ProductPage } from './pages/ProductsPage'
 import { Link } from 'react-router-dom';
 import { ProductDetailPage } from './pages/ProductDetailPage';
 import { ProductEditPage } from './pages/ProductEditPage';
+import Orders from './components/Orders';
+import OrderDetailPage from './pages/OrderDetailPage';
 
 function App() {
  
@@ -20,14 +22,17 @@ function App() {
     <div>
       <nav>
         <ul>nav menu
-          <li>
-            <Link to="/authors">Authors</Link>   
+            <li>
+                <Link to="/authors">Authors</Link>
             {/* <> <br/></> */}
             </li>
             <li>
-            <Link to="/products">Products</Link>
-            
-          </li>
+                <Link to="/products">Products</Link>
+            </li>
+            <li>
+                <Link to="/orders">Orders</Link>
+            </li>
+
         </ul>
       </nav>
     </div>
@@ -36,6 +41,8 @@ function App() {
         <Route path="/products" element={<ProductPage />} />
         <Route path="/product/:id" element={<ProductDetailPage />} />
         <Route path="/product/edit/:id" element={<ProductEditPage />} />
+        <Route path="/orders" element={<Orders />} />
+        <Route path="/order/:id" element={<OrderDetailPage />} />
       </Routes>
     </BrowserRouter>
   )

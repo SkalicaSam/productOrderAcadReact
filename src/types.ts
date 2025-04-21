@@ -18,3 +18,15 @@ export interface Product {
     price: number
     
 }
+
+export interface ShoppingItem {
+    id: number;
+    productId: number;
+    amount: number;
+}
+
+export interface Order {
+    orderId: number;
+    shoppingList: ShoppingItem[];
+    paid: boolean;
+}

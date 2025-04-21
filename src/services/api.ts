@@ -25,3 +25,7 @@ export const updateProduct = (id: number, data: { name: string; description: str
 
 export const deleteProduct = (id: number) =>
     api.delete(`/product/${id}`);
+
+export const getOrders = () => api.get('/order/orders');
+
+export const getOrderById = (id: string) => api.get(`/order/${id}`);
