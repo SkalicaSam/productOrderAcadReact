@@ -29,3 +29,5 @@ export const deleteProduct = (id: number) =>
 export const getOrders = () => api.get('/order/orders');
 
 export const getOrderById = (id: string) => api.get(`/order/${id}`);
+
+export const getProductAmount = (id: number) => api.get(`/product/${id}/amountDTO`);

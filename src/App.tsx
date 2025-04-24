@@ -9,6 +9,7 @@ import { ProductDetailPage } from './pages/ProductDetailPage';
 import { ProductEditPage } from './pages/ProductEditPage';
 import Orders from './components/Orders';
 import OrderDetailPage from './pages/OrderDetailPage';
+import Cart from './components/Cart';
 
 function App() {
  
@@ -32,6 +33,12 @@ function App() {
             <li>
                 <Link to="/orders">Orders</Link>
             </li>
+            <li>
+                <Link to="/cart">Cart</Link>
+            </li>
+
+
+
 
         </ul>
       </nav>
@@ -43,6 +50,8 @@ function App() {
         <Route path="/product/edit/:id" element={<ProductEditPage />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/order/:id" element={<OrderDetailPage />} />
+        <Route path="/cart" element={<Cart />} />
+
       </Routes>
     </BrowserRouter>
   )
