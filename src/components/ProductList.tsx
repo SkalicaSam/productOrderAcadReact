@@ -48,6 +48,7 @@ export const ProductList: React.FC<ProductListProps> = ({ refresh }) => {
                         , <> product  price:   </>{product.price}
                         <button onClick={() => handleDelete(product.id)}>Smazat</button>
                         <button onClick={() => addToCart(product)}>Přidat do košíku</button>
+
                     </li>
                 ))}
             </ul>

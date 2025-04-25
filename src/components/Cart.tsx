@@ -53,6 +53,20 @@ const Cart = forwardRef((props, ref) => {
     }
   }));
 
+  const removeFromCart = (item: CartItem) => {
+      setCartItems(prevItems => prevItems.filter(i => i.id !== item.id));
+    }
+
+  const removeOneQuantityFromCart = (itemId: number) => {
+    setCartItems(prevItems =>
+        prevItems.map(item =>
+                item.id === itemId
+                  ? { ...item, quantity: item.quantity - 1 }
+                  : item
+              ).filter(item => item.quantity > 0)
+        );
+  };
+
   return (
     <div>
       <h3>Košík</h3>
@@ -60,6 +74,8 @@ const Cart = forwardRef((props, ref) => {
         {cartItems.map(item => (
           <li key={item.id}>
             {item.name} - Množství: {item.quantity}
+            <button onClick={() => removeFromCart(item)}>Odebrat z košíku</button>
+             <button onClick={() => removeOneQuantityFromCart(item.id)}>Remove one</button>
           </li>
         ))}
       </ul>
